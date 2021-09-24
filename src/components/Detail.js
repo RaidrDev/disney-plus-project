@@ -1,44 +1,68 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
+import { useParams } from 'react-router-dom';
+import db from '../firebase';
 
 function Detail() {
+
+    const { id } = useParams();
+    const [movie, setMovie] = useState();
+
+    useEffect(() => {
+        db.collection("movies")
+            .doc(id).get().then((doc) => {
+                if (doc.exists) {
+                    setMovie(doc.data());
+                } else {
+                    
+                }
+            })
+    }, [])
+
+    console.log(movie);
+
     return (
         <Container>
-            <Background>
-                <img src= "https://cdn.vox-cdn.com/thumbor/wJ71E7nJ_4Wj0btm5seEnHNJ4Xk=/0x0:4096x2304/1200x800/filters:focal(1973x1175:2627x1829)/cdn.vox-cdn.com/uploads/chorus_image/image/60190709/BO_RGB_s120_22a_cs_pub.pub16.318.0.jpg" />
-            </Background>
+            {movie &&
+                <>
+                    <Background>
+                        <img src={movie.backgroundImg} />
+                    </Background>
 
-            <ImageTitle>
-                <img src= "https://upload.wikimedia.org/wikipedia/fr/1/1a/Bao_logo.png" />
-            </ImageTitle>
+                    <ImageTitle>
+                        <img src={movie.titleImg} />
+                    </ImageTitle>
 
-            <Controls>
-                <PlayButton>
-                    <img src= "/images/play-icon-black.png" />
-                    <span>PLAY</span>
-                </PlayButton>
+                    <Controls>
+                        <PlayButton>
+                            <img src="/images/play-icon-black.png" />
+                            <span>PLAY</span>
+                        </PlayButton>
 
-                <TrailerButton>
-                    <img src= "/images/play-icon-white.png" />
-                    <span>TRAILER</span>
-                </TrailerButton>
+                        <TrailerButton>
+                            <img src="/images/play-icon-white.png" />
+                            <span>TRAILER</span>
+                        </TrailerButton>
 
-                <AddButton>
-                    <span>+</span>
-                </AddButton>
+                        <AddButton>
+                            <span>+</span>
+                        </AddButton>
 
-                <GroupWatchButton>
-                    <img src="/images/group-icon.png" />
-                </GroupWatchButton>
-            </Controls>
+                        <GroupWatchButton>
+                            <img src="/images/group-icon.png" />
+                        </GroupWatchButton>
+                    </Controls>
 
-            <Subtitle>
-                2018 7m Family, Fantasy, Kids, Animation
-            </Subtitle>
-                
-            <Description>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            </Description>
+                    <Subtitle>
+                        {movie.subtitle}
+                    </Subtitle>
+
+                    <Description>
+                        {movie.description}
+                    </Description>
+                </>
+            }
+
         </Container>
     )
 }

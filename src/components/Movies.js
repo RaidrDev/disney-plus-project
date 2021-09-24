@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom';
 import { selectMovies } from '../features/movie/movieSlice';
 import { useSelector } from 'react-redux';
 
@@ -13,8 +14,10 @@ function Movies() {
             <Content>
                 { movies && 
                     movies.map((movie) =>(
-                        <Wrap key={movie.id}> 
-                            <img src={movie.cardImg} />
+                        <Wrap key={movie.id} > 
+                            <Link to={`detail/${movie.id}`}>
+                                <img src={movie.cardImg} />
+                            </Link>
                         </Wrap>
                     ))
                 }
@@ -54,7 +57,8 @@ function Movies() {
 
             </Content>
 
-            <h4>Popular in your Country</h4>
+            {/*Esto no va a implementar funcionalidad solo estetica*/}
+            <h4>Popular in your Country</h4> 
             <Content>
                 <Wrap>
                     <img src="https://cannonball-cdn.bamgrid.com/assets/originals/SW_Clone_Wars.png" />
