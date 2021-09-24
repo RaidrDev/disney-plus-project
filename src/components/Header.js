@@ -68,7 +68,6 @@ const Logo = styled.img`
 const NavMenu = styled.div`
     display: flex;
     align-items: center; 
-    //aasd
 
     a {
         display: flex;
