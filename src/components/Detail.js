@@ -37,7 +37,7 @@ function Detail() {
             </Subtitle>
                 
             <Description>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
             </Description>
         </Container>
     )
@@ -146,5 +146,5 @@ const Description = styled.div`
     font-size: 20px;
     margin-top: 16px;
     color: rgb(249 249 249);
-    max-width: 50%;
+    max-width: 60%;
 `

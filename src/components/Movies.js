@@ -1,11 +1,25 @@
 import React from 'react'
 import styled from 'styled-components'
+import { selectMovies } from '../features/movie/movieSlice';
+import { useSelector } from 'react-redux';
 
 function Movies() {
+
+    const movies = useSelector(selectMovies);
+
     return (
         <Container>
             <h4>Recommended for You</h4>
             <Content>
+                { movies && 
+                    movies.map((movie) =>(
+                        <Wrap key={movie.id}> 
+                            <img src={movie.cardImg} />
+                        </Wrap>
+                    ))
+                }
+
+             {/*
                 <Wrap>
                     <img src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/6172D2E01118FD6F50BD51FF1DB9E1D8DDC9BADA3F5B2B71A21F3005B3E0497D/scale?width=1200&aspectRatio=1.78&format=jpeg" />
                 </Wrap>
@@ -36,9 +50,10 @@ function Movies() {
 
                 <Wrap>
                     <img src="https://cannonball-cdn.bamgrid.com/assets/originals/SW_Clone_Wars.png" />
-                </Wrap>
+                </Wrap> */}
 
             </Content>
+
             <h4>Popular in your Country</h4>
             <Content>
                 <Wrap>
@@ -58,6 +73,7 @@ function Movies() {
                 </Wrap>
 
             </Content>
+
             <Space>
                 
             </Space>
