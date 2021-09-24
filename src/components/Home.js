@@ -10,7 +10,7 @@ function Home() {
 
     useEffect(()=>{
         db.collection("movies").onSnapshot((snapshot)=>{
-          console.log(snapshot)  
+          console.log(snapshot);  
         })
     }, [])
 
