@@ -25,6 +25,7 @@ const Container = styled.div`
     display: flex;
     align-items: top;
     justify-content: center;
+    
     &:before {
         background-position: top;
         background-size: cover;
@@ -69,7 +70,8 @@ const SignUp = styled.a`
     letter-spacing: 1.5px;
     margin-top: 8px;
     margin-bottom: 8px;
-    &: hover {
+    
+    &:hover {
         background: #0483ee; 
     }
 `
