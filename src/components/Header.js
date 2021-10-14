@@ -26,7 +26,7 @@ function Header() {
                     email: user.email,
                     photo: user.photoURL
                 }))
-                history.push("/");
+                history.push("/home");
             }
         })
     }, [])
@@ -45,13 +45,13 @@ function Header() {
     const signOut = () => {
         auth.signOut().then(()=>{
             dispatch(setSignOut());
-            history.push("/login");
+            history.push("/");
         })
     }
 
     return (
         <Nav>
-            <Link to={``}>
+            <Link to={`/home`}>
                 <Logo src="/images/logo.svg" />
             </ Link>
             {!userName ? (
@@ -61,7 +61,7 @@ function Header() {
                 ) :
                 <>
                     <NavMenu>
-                        <Link to={``}>
+                        <Link to={`/home`}>
                             <a>
                                 <img src="/images/home-icon.svg" />
                                 <span>HOME</span>
